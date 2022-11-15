@@ -13,7 +13,7 @@ import h5py
 import streamlit as st
 st.header("Sign Recognizor")
 def main():
-    file_uploaded=st.file_uploader("Choose the file",type=['jpg','png','jpeg'])
+    file_uploaded=st.file_uploader("Choose the file",type=['jpg','jpeg'])
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         figure = plt.figure()
