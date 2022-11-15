@@ -24,7 +24,7 @@ def main():
         st.pyplot(figure)
         
 def predict_class(image):
-    classifier_model= load_model(r'streamlit_app/CNN-ISL.h5')
+    classifier_model= load_model(r'CNN-ISL.h5')
     shape =((50,50,3))
     model = Sequential([hub.KerasLayer(classifier_model,input_shape=shape)])
     test_img = image.resize((50,50))
