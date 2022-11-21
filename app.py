@@ -11,9 +11,9 @@ from keras_applications.resnet50 import preprocess_input
 import os
 import h5py
 import streamlit as st
-st.header("Sign Recognizor")
+st.header("Indian Sign Language Recognizor")
 def main():
-    file_uploaded=st.file_uploader("Choose the file",type=['jpg','jpeg'])
+    file_uploaded=st.file_uploader("Choose the file",type=['jpg','png','jpeg'])
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         figure = plt.figure()
@@ -24,7 +24,7 @@ def main():
         st.pyplot(figure)
         
 def predict_class(image):
-    classifier_model= load_model(r'CNN-ISL.h5')
+    classifier_model= load_model(r'E:\\TF\\streamlit_app\\CNN-ISL.h5')
     shape =((50,50,3))
     model = Sequential([hub.KerasLayer(classifier_model,input_shape=shape)])
     test_img = image.resize((50,50))
@@ -42,5 +42,14 @@ def predict_class(image):
 
 if __name__ == "__main__":
     main()
+
+st.write("For best results please use the below given dataset for prediction")    
+with open("Test_data.zip", "rb") as fp:
+    btn = st.download_button(
+        label="Download Test_data.ZIP",
+        data=fp,
+        file_name="test_Data.zip",
+        mime="streamlit_app/zip"
+    )
     
     
